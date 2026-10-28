@@ -1,0 +1,43 @@
+[project]
+name = "gridcrucible"
+version = "0.1.0"
+description = "KCL-KVL compliant synthetic transmission-grid generator (QNCA pipeline: OHM/TUNE/TRIM loops), Python conversion of the Snodgrass dissertation MATLAB codebase"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Jonathan Snodgrass", email = "snodgrass@tamu.edu" }]
+dependencies = [
+    # Shared GridForge helpers are vendored under src/gridcrucible/_gridforge/
+    # (a pinned copy), so there is no external gridforge dependency.
+    "psutil>=5.9",         # machine-aware Gurobi sizing (vendored _gridforge.solver)
+    "numpy>=1.26",
+    "scipy>=1.12",
+    "pandas>=2.2",
+    "pyarrow>=15.0",       # parquet data store
+    "networkx>=3.2",       # connectivity guards, cycle basis, graph metrics
+    "matplotlib>=3.8",     # result plots (Agg backend safe)
+    "gurobipy>=11.0",      # QP (OHM loop, UCCD) — replaces cplexqp/fmincon
+    "pandapower>=3.5",     # ALL power-flow / OPF solving ("pandapower everywhere")
+    "numba>=0.61",         # pandapower PF acceleration (supports py3.13, NOT 3.14 yet)
+    "openpyxl>=3.1",       # Excel report writers
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[project.scripts]
+gridcrucible = "gridcrucible.core:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gridcrucible"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

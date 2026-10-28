@@ -1,0 +1,24 @@
+# Real-SRTV FULL run (work queue #1, launched 2026-07-10).
+# Measured basis (configs/real_srtv_measure.toml, run-id real_srtv):
+# ~25 min/TRIM iteration at the initial 2.49M candidates, ~5%/iter removal,
+# cost shrinking with the candidate set -> ~9-12 h to the EI target degree.
+# write_outputs is EXCLUDED (not implemented yet); every stage
+# checkpoints, so the run resumes with:
+#   python -m uv run python -m gridcrucible.core gridcrucible/configs/real_srtv_full.toml \
+#       --run-id real_srtv_full
+
+stages = [
+    "load_inputs", "setup_substations", "setup_generators",
+    "build_scenarios", "build_candidates", "trim_iterations",
+    "create_buses", "shunt_compensation", "ac_refinement",
+    "final_acpf", "metrics",
+]
+verbose = false
+
+[parallel]
+# ac_refinement envelope passes: 57 independent single-threaded pandapower
+# ACPFs per pass — fan out over a process pool (2026-07-11: the serial
+# stage ran 10 h without finishing; measured GS-fallback solves are
+# minutes each)
+ac_parallel = true
+workers = -1        # all cores

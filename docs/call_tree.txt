@@ -1,0 +1,309 @@
+# GridCrucible MATLAB call tree  (generated 2026-07-07)
+# Roots: main_SRTV.m (driver) + MultiLevelProgram.m (OHM/TUNE/TRIM core).
+# Format: indentation = call depth; (N loc) = lines of code;
+#   [GRIDFORGE-OWNED] = converted by the parallel gridforge effort - do NOT convert here;
+#   [BOTH-FOLDERS] = exists in KCL and KCL-KVL folders (KVL copy authoritative);
+#   [family:N] = feval-dispatched regional family collapsed to one node;
+#   (^ repeat) = subtree already expanded above; ext: = external deps.
+
+main_SRTV (764 loc)  [ext:VChooseK,loadcase]
+    ACPowerFlowFinal (121 loc)  [GRIDFORGE-OWNED]
+        YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+    CreateBranch (11 loc)
+    CreateBuses (460 loc)
+        AssignConductors (35 loc)
+        CreateSNet (585 loc)
+            MakeLoadProfiles_<Region> (8350 loc)  [family:15 regional files]
+            UCCD (94 loc)  [ext:cplexqp]
+            UCED (68 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS; ext:cplexqp,quadprog]
+        DCPowerFlowSimple (64 loc)
+            YBusCalcDC (15 loc)
+        RXB (59 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+            GMDData<Region> (841 loc)  [family:14 regional files]
+        ResizeBranches (67 loc)
+        TransformerImpedances (81 loc)
+    CreateGeneratorDataNational (79 loc)  [ext:xlsread]
+    CreateOLMatrices (186 loc)  [GRIDFORGE-OWNED; ext:VChooseK,parpool]
+        OLPathDistances (20 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        RXB (59 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+            GMDData<Region> (841 loc)  [family:14 regional files]
+    CreateSNet (585 loc)
+        MakeLoadProfiles_<Region> (8350 loc)  [family:15 regional files]
+        UCCD (94 loc)  [ext:cplexqp]
+        UCED (68 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS; ext:cplexqp,quadprog]
+    EIBranchSanitized (284339 loc)
+    EILargeIslandSanitized (292720 loc)
+    ElectricalComparison (213 loc)
+        CreateLoadScenarios (74 loc)
+            MakeLoadProfiles_<Region> (8350 loc)  [family:15 regional files]
+        DCPowerFlowFull (101 loc)
+            YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        MatpowerDCOPF (143 loc)  [ext:mpoption,rundcopf]
+            YBusCalcDC (15 loc)
+        Table2Matpower (84 loc)
+    InitOptions (81 loc)
+    MiddleLoopAC (161 loc)  [ext:parpool]
+        ACPowerFlowFinal (121 loc)  [GRIDFORGE-OWNED]
+            YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        ACPowerFlowSimple (45 loc)
+            YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        AssignConductors (35 loc)
+        RXB (59 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+            GMDData<Region> (841 loc)  [family:14 regional files]
+        ResizeBranches (67 loc)
+        TransformerImpedances (81 loc)
+        YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+    MultiLevelProgram (396 loc)  [ext:parpool]
+        ACInnerLoopOptim (270 loc)  [ext:fmincon]
+            ACPowerFlowFinal (121 loc)  [GRIDFORGE-OWNED]
+                YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+            cell2csv (85 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        CreateBranch (11 loc)
+        DCInnerLoop (327 loc)  [ext:cplexqp]
+            DCPowerFlowSimple (64 loc)
+                YBusCalcDC (15 loc)
+            PlotILFun (439 loc)
+        MiddleLoop (126 loc)
+            AssignConductors (35 loc)
+            DCPowerFlowSimple (64 loc)
+                YBusCalcDC (15 loc)
+            RXB (59 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+                GMDData<Region> (841 loc)  [family:14 regional files]
+            ResizeBranches (67 loc)
+            TransformerImpedances (81 loc)
+        NetworkStatistics (93 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        OuterLoop (163 loc)
+        PlotNetwork (63 loc)
+        RealismMetrics (611 loc)
+            Singularvalues (20 loc)
+            TIERefficient (87 loc)
+            Table2Matpower (84 loc)
+            cyclebasisport (191 loc)
+            eigencentrality (24 loc)  [ext:eigs]
+            fieldervector (32 loc)  [ext:eigs]
+            nodedegre (25 loc)
+            normalizedlaplacian (34 loc)  [ext:eigs]
+        RemovePaths (86 loc)
+            YBusCalcDC (15 loc)
+        SaveResults (84 loc)
+        WritePowerWorld (186 loc)
+    NetworkGraphComparison (453 loc)
+        AssignConductors (35 loc)
+        NetworkStatistics (93 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        PlotNodeDegreesComparison (183 loc)
+        RXB (59 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+            GMDData<Region> (841 loc)  [family:14 regional files]
+        RealismMetrics (611 loc)
+            Singularvalues (20 loc)
+            TIERefficient (87 loc)
+            Table2Matpower (84 loc)
+            cyclebasisport (191 loc)
+            eigencentrality (24 loc)  [ext:eigs]
+            fieldervector (32 loc)  [ext:eigs]
+            nodedegre (25 loc)
+            normalizedlaplacian (34 loc)  [ext:eigs]
+        RealismMetricsComparison (888 loc)
+            Singularvalues (20 loc)
+            TIERefficient (87 loc)
+            Table2Matpower (84 loc)
+            cyclebasisport (191 loc)
+            eigencentrality (24 loc)  [ext:eigs]
+            fieldervector (32 loc)  [ext:eigs]
+            nodedegre (25 loc)
+            normalizedlaplacian (34 loc)  [ext:eigs]
+    NetworkStatistics (93 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+    OLPathDistances (20 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+    PlotNodeDegrees (212 loc)
+    PlotNodeDegreesActual (87 loc)
+    ReactivePowerPlacement (235 loc)
+        ACPowerFlowFinal (121 loc)  [GRIDFORGE-OWNED]
+            YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        ACPowerFlowSimple (45 loc)
+            YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        PVPQSwitching (47 loc)
+            ACPowerFlowFinal (121 loc)  [GRIDFORGE-OWNED]
+                YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+    RealismMetrics (611 loc)
+        Singularvalues (20 loc)
+        TIERefficient (87 loc)
+        Table2Matpower (84 loc)
+        cyclebasisport (191 loc)
+        eigencentrality (24 loc)  [ext:eigs]
+        fieldervector (32 loc)  [ext:eigs]
+        nodedegre (25 loc)
+        normalizedlaplacian (34 loc)  [ext:eigs]
+    RealismMetricsActualEI (919 loc)
+        Singularvalues (20 loc)
+        TIERefficient (87 loc)
+        YBusCalcDC (15 loc)
+        cyclebasisport (191 loc)
+        eigencentrality (24 loc)  [ext:eigs]
+        fieldervector (32 loc)  [ext:eigs]
+        nodedegre (25 loc)
+        normalizedlaplacian (34 loc)  [ext:eigs]
+    RealismMetricsActualWECC (891 loc)
+        Singularvalues (20 loc)
+        TIERefficient (87 loc)
+        YBusCalcDC (15 loc)
+        cyclebasisport (191 loc)
+        eigencentrality (24 loc)  [ext:eigs]
+        fieldervector (32 loc)  [ext:eigs]
+        nodedegre (25 loc)
+        normalizedlaplacian (34 loc)  [ext:eigs]
+    TrimQNCALines (40 loc)
+    WECCBranchSanitized (90067 loc)
+    WECCLargeIslandSanitized (92094 loc)
+    WriteLoads (24 loc)
+    WriteMetrics (68 loc)
+    WritePowerWorld (186 loc)
+    WriteSubstationData (31 loc)
+
+MultiLevelProgram (396 loc)  [ext:parpool]
+    ACInnerLoopOptim (270 loc)  [ext:fmincon]
+        ACPowerFlowFinal (121 loc)  [GRIDFORGE-OWNED]
+            YBusCalc (32 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+        cell2csv (85 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+    CreateBranch (11 loc)
+    DCInnerLoop (327 loc)  [ext:cplexqp]
+        DCPowerFlowSimple (64 loc)
+            YBusCalcDC (15 loc)
+        PlotILFun (439 loc)
+    MiddleLoop (126 loc)
+        AssignConductors (35 loc)
+        DCPowerFlowSimple (64 loc)
+            YBusCalcDC (15 loc)
+        RXB (59 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+            GMDData<Region> (841 loc)  [family:14 regional files]
+        ResizeBranches (67 loc)
+        TransformerImpedances (81 loc)
+    NetworkStatistics (93 loc)  [GRIDFORGE-OWNED; BOTH-FOLDERS]
+    OuterLoop (163 loc)
+    PlotNetwork (63 loc)
+    RealismMetrics (611 loc)
+        Singularvalues (20 loc)
+        TIERefficient (87 loc)
+        Table2Matpower (84 loc)
+        cyclebasisport (191 loc)
+        eigencentrality (24 loc)  [ext:eigs]
+        fieldervector (32 loc)  [ext:eigs]
+        nodedegre (25 loc)
+        normalizedlaplacian (34 loc)  [ext:eigs]
+    RemovePaths (86 loc)
+        YBusCalcDC (15 loc)
+    SaveResults (84 loc)
+    WritePowerWorld (186 loc)
+
+# --- FLAT ADJACENCY (caller -> callees), BFS order ---
+MultiLevelProgram [depth 0] -> ACInnerLoopOptim, CreateBranch, DCInnerLoop, MiddleLoop, NetworkStatistics, OuterLoop, PlotNetwork, RealismMetrics, RemovePaths, SaveResults, WritePowerWorld
+main_SRTV [depth 0] -> ACPowerFlowFinal, CreateBranch, CreateBuses, CreateGeneratorDataNational, CreateOLMatrices, CreateSNet, EIBranchSanitized, EILargeIslandSanitized, ElectricalComparison, InitOptions, MiddleLoopAC, MultiLevelProgram, NetworkGraphComparison, NetworkStatistics, OLPathDistances, PlotNodeDegrees, PlotNodeDegreesActual, ReactivePowerPlacement, RealismMetrics, RealismMetricsActualEI, RealismMetricsActualWECC, TrimQNCALines, WECCBranchSanitized, WECCLargeIslandSanitized, WriteLoads, WriteMetrics, WritePowerWorld, WriteSubstationData
+ACInnerLoopOptim [depth 1] -> ACPowerFlowFinal, cell2csv
+ACPowerFlowFinal [depth 1] -> YBusCalc
+CreateBranch [depth 1] -> (leaf)
+CreateBuses [depth 1] -> AssignConductors, CreateSNet, DCPowerFlowSimple, RXB, ResizeBranches, TransformerImpedances
+CreateGeneratorDataNational [depth 1] -> (leaf)
+CreateOLMatrices [depth 1] -> OLPathDistances, RXB
+CreateSNet [depth 1] -> MakeLoadProfiles_<Region>, UCCD, UCED
+DCInnerLoop [depth 1] -> DCPowerFlowSimple, PlotILFun
+EIBranchSanitized [depth 1] -> (leaf)
+EILargeIslandSanitized [depth 1] -> (leaf)
+ElectricalComparison [depth 1] -> CreateLoadScenarios, DCPowerFlowFull, MatpowerDCOPF, Table2Matpower
+InitOptions [depth 1] -> (leaf)
+MiddleLoop [depth 1] -> AssignConductors, DCPowerFlowSimple, RXB, ResizeBranches, TransformerImpedances
+MiddleLoopAC [depth 1] -> ACPowerFlowFinal, ACPowerFlowSimple, AssignConductors, RXB, ResizeBranches, TransformerImpedances, YBusCalc
+NetworkGraphComparison [depth 1] -> AssignConductors, NetworkStatistics, PlotNodeDegreesComparison, RXB, RealismMetrics, RealismMetricsComparison
+NetworkStatistics [depth 1] -> (leaf)
+OLPathDistances [depth 1] -> (leaf)
+OuterLoop [depth 1] -> (leaf)
+PlotNetwork [depth 1] -> (leaf)
+PlotNodeDegrees [depth 1] -> (leaf)
+PlotNodeDegreesActual [depth 1] -> (leaf)
+ReactivePowerPlacement [depth 1] -> ACPowerFlowFinal, ACPowerFlowSimple, PVPQSwitching
+RealismMetrics [depth 1] -> Singularvalues, TIERefficient, Table2Matpower, cyclebasisport, eigencentrality, fieldervector, nodedegre, normalizedlaplacian
+RealismMetricsActualEI [depth 1] -> Singularvalues, TIERefficient, YBusCalcDC, cyclebasisport, eigencentrality, fieldervector, nodedegre, normalizedlaplacian
+RealismMetricsActualWECC [depth 1] -> Singularvalues, TIERefficient, YBusCalcDC, cyclebasisport, eigencentrality, fieldervector, nodedegre, normalizedlaplacian
+RemovePaths [depth 1] -> YBusCalcDC
+SaveResults [depth 1] -> (leaf)
+TrimQNCALines [depth 1] -> (leaf)
+WECCBranchSanitized [depth 1] -> (leaf)
+WECCLargeIslandSanitized [depth 1] -> (leaf)
+WriteLoads [depth 1] -> (leaf)
+WriteMetrics [depth 1] -> (leaf)
+WritePowerWorld [depth 1] -> (leaf)
+WriteSubstationData [depth 1] -> (leaf)
+ACPowerFlowSimple [depth 2] -> YBusCalc
+AssignConductors [depth 2] -> (leaf)
+CreateLoadScenarios [depth 2] -> MakeLoadProfiles_<Region>
+DCPowerFlowFull [depth 2] -> YBusCalc
+DCPowerFlowSimple [depth 2] -> YBusCalcDC
+MakeLoadProfiles_<Region> [depth 2] -> (leaf)
+MatpowerDCOPF [depth 2] -> YBusCalcDC
+PVPQSwitching [depth 2] -> ACPowerFlowFinal
+PlotILFun [depth 2] -> (leaf)
+PlotNodeDegreesComparison [depth 2] -> (leaf)
+RXB [depth 2] -> GMDData<Region>
+RealismMetricsComparison [depth 2] -> Singularvalues, TIERefficient, Table2Matpower, cyclebasisport, eigencentrality, fieldervector, nodedegre, normalizedlaplacian
+ResizeBranches [depth 2] -> (leaf)
+Singularvalues [depth 2] -> (leaf)
+TIERefficient [depth 2] -> (leaf)
+Table2Matpower [depth 2] -> (leaf)
+TransformerImpedances [depth 2] -> (leaf)
+UCCD [depth 2] -> (leaf)
+UCED [depth 2] -> (leaf)
+YBusCalc [depth 2] -> (leaf)
+YBusCalcDC [depth 2] -> (leaf)
+cell2csv [depth 2] -> (leaf)
+cyclebasisport [depth 2] -> (leaf)
+eigencentrality [depth 2] -> (leaf)
+fieldervector [depth 2] -> (leaf)
+nodedegre [depth 2] -> (leaf)
+normalizedlaplacian [depth 2] -> (leaf)
+GMDData<Region> [depth 3] -> (leaf)
+
+# --- ORPHANED (in KVL folder, unreachable from mains, not gridforge-owned) ---
+ACInnerLoop (270 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\ACInnerLoop.m
+ACInnerLoopDebugging (156 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\ACInnerLoopDebugging.m
+ACInnerLoopV1 (239 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\ACInnerLoopV1.m
+AZNM5943 (11996 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\AZNM5943.m
+AnalyzeResults (138 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\AnalyzeResults.m
+AnalyzeResultsActual (64 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\AnalyzeResultsActual.m
+CreateGeneratorDataExt (63 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\CreateGeneratorDataExt.m
+CreateSNetOld (296 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\CreateSNetOld.m
+CreateSNetV1 (355 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\CreateSNetV1.m
+FavoringLines (21 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\FavoringLines.m
+GenerateResultsStats (5 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\GenerateResultsStats.m
+MatpowerACPF (41 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\MatpowerACPF.m
+MatpowerDCOPFReal (129 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\MatpowerDCOPFReal.m
+MatpowerDCPF (39 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\MatpowerDCPF.m
+MatpowerED (74 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\MatpowerED.m
+MeshNetwork (12 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\MeshNetwork.m
+ModifiedDCPowerFlow (2 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\ModifiedDCPowerFlow.m
+NLKCL (8 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\NLKCL.m
+NREL_cluster (384 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\FRCC\NREL_cluster.m
+NetworkStatisticsActual (97 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\NetworkStatisticsActual.m
+PlotResultStats (439 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\PlotResultStats.m
+RealismMetricsActual (164 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\RealismMetricsActual.m
+ResizeLines (48 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\ResizeLines.m
+SRTV4625 (12110 loc)  KCL-KVL Compliant Grid Generator\SRTV\Example Datasets\SRTV4625.m
+SizingTransformers (26 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\SizingTransformers.m
+SquentialDCPowerFlow (38 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\SquentialDCPowerFlow.m
+StepSize (38 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\StepSize.m
+SubstationAssignmentScott (248 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\SubstationAssignmentScott.m
+WriteLoadScenarios (14 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\WriteLoadScenarios.m
+WritingCSVFiles (26 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\WritingCSVFiles.m
+allcyclesport (88 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\allcyclesport.m
+enrel_profiles_CAISO (28 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\CAISO\enrel_profiles_CAISO.m
+loadprofiles2010 (817 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\MISO\loadprofiles2010.m
+smoothprofile (47 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\AZNM\smoothprofile.m
+stats (249 loc)  KCL-KVL Compliant Grid Generator\Matlab Functions\Sogol Realism\stats.m
+test (10 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\RFCE\NREL_Profiles\Newark\test.m
+xls2rawMat_AZNM (19 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\AZNM\xls2rawMat_AZNM.m
+xls2rawMat_FRCC (11 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\FRCC\xls2rawMat_FRCC.m
+xls2rawMat_NEISO (23 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\NEISO\xls2rawMat_NEISO.m
+xls2rawMat_NWPP (19 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\NWPP\xls2rawMat_NWPP.m
+xls2rawMat_NYISO (3 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\NYISO\xls2rawMat_NYISO.m
+xls2rawMat_RFCE (7 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\RFCE\xls2rawMat_RFCE.m
+xls2rawMat_RFCW (11 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\RFCW\xls2rawMat_RFCW.m
+xls2rawMat_SPP (23 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\SPP\xls2rawMat_SPP.m
+xls2rawMat_SRMV (11 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\SRMV\xls2rawMat_SRMV.m
+xls2rawMat_SRTV (15 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\SRTV\xls2rawMat_SRTV.m
+xls2rawMat_SRVC (23 loc)  KCL-KVL Compliant Grid Generator\Master Load Data\SRVC\xls2rawMat_SRVC.m

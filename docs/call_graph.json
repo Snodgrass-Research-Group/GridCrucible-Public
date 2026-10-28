@@ -1,0 +1,985 @@
+{
+ "generated": "2026-07-07",
+ "roots": [
+  "main_SRTV",
+  "MultiLevelProgram"
+ ],
+ "active": {
+  "ACInnerLoopOptim": {
+   "depth": 1,
+   "loc": 270,
+   "calls": [
+    "ACPowerFlowFinal",
+    "cell2csv"
+   ],
+   "externals": [
+    "fmincon"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ACInnerLoopOptim.m",
+   "kcl_path": null
+  },
+  "ACPowerFlowFinal": {
+   "depth": 1,
+   "loc": 121,
+   "calls": [
+    "YBusCalc"
+   ],
+   "externals": [],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ACPowerFlowFinal.m",
+   "kcl_path": null
+  },
+  "ACPowerFlowSimple": {
+   "depth": 2,
+   "loc": 45,
+   "calls": [
+    "YBusCalc"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ACPowerFlowSimple.m",
+   "kcl_path": null
+  },
+  "AssignConductors": {
+   "depth": 2,
+   "loc": 35,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\AssignConductors.m",
+   "kcl_path": null
+  },
+  "CreateBranch": {
+   "depth": 1,
+   "loc": 11,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateBranch.m",
+   "kcl_path": null
+  },
+  "CreateBuses": {
+   "depth": 1,
+   "loc": 460,
+   "calls": [
+    "AssignConductors",
+    "CreateSNet",
+    "DCPowerFlowSimple",
+    "RXB",
+    "ResizeBranches",
+    "TransformerImpedances"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateBuses.m",
+   "kcl_path": null
+  },
+  "CreateGeneratorDataNational": {
+   "depth": 1,
+   "loc": 79,
+   "calls": [],
+   "externals": [
+    "xlsread"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateGeneratorDataNational.m",
+   "kcl_path": null
+  },
+  "CreateLoadScenarios": {
+   "depth": 2,
+   "loc": 74,
+   "calls": [
+    "MakeLoadProfiles_<Region>"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateLoadScenarios.m",
+   "kcl_path": null
+  },
+  "CreateOLMatrices": {
+   "depth": 1,
+   "loc": 186,
+   "calls": [
+    "OLPathDistances",
+    "RXB"
+   ],
+   "externals": [
+    "VChooseK",
+    "parpool"
+   ],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateOLMatrices.m",
+   "kcl_path": null
+  },
+  "CreateSNet": {
+   "depth": 1,
+   "loc": 585,
+   "calls": [
+    "MakeLoadProfiles_<Region>",
+    "UCCD",
+    "UCED"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateSNet.m",
+   "kcl_path": null
+  },
+  "DCInnerLoop": {
+   "depth": 1,
+   "loc": 327,
+   "calls": [
+    "DCPowerFlowSimple",
+    "PlotILFun"
+   ],
+   "externals": [
+    "cplexqp"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\DCInnerLoop.m",
+   "kcl_path": null
+  },
+  "DCPowerFlowFull": {
+   "depth": 2,
+   "loc": 101,
+   "calls": [
+    "YBusCalc"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\DCPowerFlowFull.m",
+   "kcl_path": null
+  },
+  "DCPowerFlowSimple": {
+   "depth": 2,
+   "loc": 64,
+   "calls": [
+    "YBusCalcDC"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\DCPowerFlowSimple.m",
+   "kcl_path": null
+  },
+  "EIBranchSanitized": {
+   "depth": 1,
+   "loc": 284339,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Default Input Data\\Network Data\\EIBranchSanitized.m",
+   "kcl_path": null
+  },
+  "EILargeIslandSanitized": {
+   "depth": 1,
+   "loc": 292720,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Default Input Data\\Network Data\\EILargeIslandSanitized.m",
+   "kcl_path": null
+  },
+  "ElectricalComparison": {
+   "depth": 1,
+   "loc": 213,
+   "calls": [
+    "CreateLoadScenarios",
+    "DCPowerFlowFull",
+    "MatpowerDCOPF",
+    "Table2Matpower"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ElectricalComparison.m",
+   "kcl_path": null
+  },
+  "GMDData<Region>": {
+   "depth": 3,
+   "loc": 841,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": null,
+   "kcl_path": null
+  },
+  "InitOptions": {
+   "depth": 1,
+   "loc": 81,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\SRTV\\User Input Data\\InitOptions.m",
+   "kcl_path": null
+  },
+  "MakeLoadProfiles_<Region>": {
+   "depth": 2,
+   "loc": 8350,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": null,
+   "kcl_path": null
+  },
+  "MatpowerDCOPF": {
+   "depth": 2,
+   "loc": 143,
+   "calls": [
+    "YBusCalcDC"
+   ],
+   "externals": [
+    "mpoption",
+    "rundcopf"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MatpowerDCOPF.m",
+   "kcl_path": null
+  },
+  "MiddleLoop": {
+   "depth": 1,
+   "loc": 126,
+   "calls": [
+    "AssignConductors",
+    "DCPowerFlowSimple",
+    "RXB",
+    "ResizeBranches",
+    "TransformerImpedances"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MiddleLoop.m",
+   "kcl_path": null
+  },
+  "MiddleLoopAC": {
+   "depth": 1,
+   "loc": 161,
+   "calls": [
+    "ACPowerFlowFinal",
+    "ACPowerFlowSimple",
+    "AssignConductors",
+    "RXB",
+    "ResizeBranches",
+    "TransformerImpedances",
+    "YBusCalc"
+   ],
+   "externals": [
+    "parpool"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MiddleLoopAC.m",
+   "kcl_path": null
+  },
+  "MultiLevelProgram": {
+   "depth": 0,
+   "loc": 396,
+   "calls": [
+    "ACInnerLoopOptim",
+    "CreateBranch",
+    "DCInnerLoop",
+    "MiddleLoop",
+    "NetworkStatistics",
+    "OuterLoop",
+    "PlotNetwork",
+    "RealismMetrics",
+    "RemovePaths",
+    "SaveResults",
+    "WritePowerWorld"
+   ],
+   "externals": [
+    "parpool"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MultiLevelProgram.m",
+   "kcl_path": null
+  },
+  "NetworkGraphComparison": {
+   "depth": 1,
+   "loc": 453,
+   "calls": [
+    "AssignConductors",
+    "NetworkStatistics",
+    "PlotNodeDegreesComparison",
+    "RXB",
+    "RealismMetrics",
+    "RealismMetricsComparison"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\NetworkGraphComparison.m",
+   "kcl_path": null
+  },
+  "NetworkStatistics": {
+   "depth": 1,
+   "loc": 93,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\NetworkStatistics.m",
+   "kcl_path": "KCL-Compliant Grid Generator\\Matlab Functions\\NetworkStatistics.m"
+  },
+  "OLPathDistances": {
+   "depth": 1,
+   "loc": 20,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\OLPathDistances.m",
+   "kcl_path": "KCL-Compliant Grid Generator\\Matlab Functions\\OLPathDistances.m"
+  },
+  "OuterLoop": {
+   "depth": 1,
+   "loc": 163,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\OuterLoop.m",
+   "kcl_path": null
+  },
+  "PVPQSwitching": {
+   "depth": 2,
+   "loc": 47,
+   "calls": [
+    "ACPowerFlowFinal"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\PVPQSwitching.m",
+   "kcl_path": null
+  },
+  "PlotILFun": {
+   "depth": 2,
+   "loc": 439,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\PlotILFun.m",
+   "kcl_path": null
+  },
+  "PlotNetwork": {
+   "depth": 1,
+   "loc": 63,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\PlotNetwork.m",
+   "kcl_path": null
+  },
+  "PlotNodeDegrees": {
+   "depth": 1,
+   "loc": 212,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\PlotNodeDegrees.m",
+   "kcl_path": null
+  },
+  "PlotNodeDegreesActual": {
+   "depth": 1,
+   "loc": 87,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\PlotNodeDegreesActual.m",
+   "kcl_path": null
+  },
+  "PlotNodeDegreesComparison": {
+   "depth": 2,
+   "loc": 183,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\PlotNodeDegreesComparison.m",
+   "kcl_path": null
+  },
+  "RXB": {
+   "depth": 2,
+   "loc": 59,
+   "calls": [
+    "GMDData<Region>"
+   ],
+   "externals": [],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\RXB.m",
+   "kcl_path": "KCL-Compliant Grid Generator\\Matlab Functions\\RXB.m"
+  },
+  "ReactivePowerPlacement": {
+   "depth": 1,
+   "loc": 235,
+   "calls": [
+    "ACPowerFlowFinal",
+    "ACPowerFlowSimple",
+    "PVPQSwitching"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ReactivePowerPlacement.m",
+   "kcl_path": null
+  },
+  "RealismMetrics": {
+   "depth": 1,
+   "loc": 611,
+   "calls": [
+    "Singularvalues",
+    "TIERefficient",
+    "Table2Matpower",
+    "cyclebasisport",
+    "eigencentrality",
+    "fieldervector",
+    "nodedegre",
+    "normalizedlaplacian"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\RealismMetrics.m",
+   "kcl_path": null
+  },
+  "RealismMetricsActualEI": {
+   "depth": 1,
+   "loc": 919,
+   "calls": [
+    "Singularvalues",
+    "TIERefficient",
+    "YBusCalcDC",
+    "cyclebasisport",
+    "eigencentrality",
+    "fieldervector",
+    "nodedegre",
+    "normalizedlaplacian"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\RealismMetricsActualEI.m",
+   "kcl_path": null
+  },
+  "RealismMetricsActualWECC": {
+   "depth": 1,
+   "loc": 891,
+   "calls": [
+    "Singularvalues",
+    "TIERefficient",
+    "YBusCalcDC",
+    "cyclebasisport",
+    "eigencentrality",
+    "fieldervector",
+    "nodedegre",
+    "normalizedlaplacian"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\RealismMetricsActualWECC.m",
+   "kcl_path": null
+  },
+  "RealismMetricsComparison": {
+   "depth": 2,
+   "loc": 888,
+   "calls": [
+    "Singularvalues",
+    "TIERefficient",
+    "Table2Matpower",
+    "cyclebasisport",
+    "eigencentrality",
+    "fieldervector",
+    "nodedegre",
+    "normalizedlaplacian"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\RealismMetricsComparison.m",
+   "kcl_path": null
+  },
+  "RemovePaths": {
+   "depth": 1,
+   "loc": 86,
+   "calls": [
+    "YBusCalcDC"
+   ],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\RemovePaths.m",
+   "kcl_path": null
+  },
+  "ResizeBranches": {
+   "depth": 2,
+   "loc": 67,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ResizeBranches.m",
+   "kcl_path": null
+  },
+  "SaveResults": {
+   "depth": 1,
+   "loc": 84,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\SaveResults.m",
+   "kcl_path": null
+  },
+  "Singularvalues": {
+   "depth": 2,
+   "loc": 20,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Sogol Realism\\Singularvalues.m",
+   "kcl_path": null
+  },
+  "TIERefficient": {
+   "depth": 2,
+   "loc": 87,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Sogol Realism\\TIERefficient.m",
+   "kcl_path": null
+  },
+  "Table2Matpower": {
+   "depth": 2,
+   "loc": 84,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Table2Matpower.m",
+   "kcl_path": null
+  },
+  "TransformerImpedances": {
+   "depth": 2,
+   "loc": 81,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\TransformerImpedances.m",
+   "kcl_path": null
+  },
+  "TrimQNCALines": {
+   "depth": 1,
+   "loc": 40,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\TrimQNCALines.m",
+   "kcl_path": null
+  },
+  "UCCD": {
+   "depth": 2,
+   "loc": 94,
+   "calls": [],
+   "externals": [
+    "cplexqp"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\UCCD.m",
+   "kcl_path": null
+  },
+  "UCED": {
+   "depth": 2,
+   "loc": 68,
+   "calls": [],
+   "externals": [
+    "cplexqp",
+    "quadprog"
+   ],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\UCED.m",
+   "kcl_path": "KCL-Compliant Grid Generator\\Matlab Functions\\UCED.m"
+  },
+  "WECCBranchSanitized": {
+   "depth": 1,
+   "loc": 90067,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Default Input Data\\Network Data\\WECCBranchSanitized.m",
+   "kcl_path": null
+  },
+  "WECCLargeIslandSanitized": {
+   "depth": 1,
+   "loc": 92094,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Default Input Data\\Network Data\\WECCLargeIslandSanitized.m",
+   "kcl_path": null
+  },
+  "WriteLoads": {
+   "depth": 1,
+   "loc": 24,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\WriteLoads.m",
+   "kcl_path": null
+  },
+  "WriteMetrics": {
+   "depth": 1,
+   "loc": 68,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\WriteMetrics.m",
+   "kcl_path": null
+  },
+  "WritePowerWorld": {
+   "depth": 1,
+   "loc": 186,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\WritePowerWorld.m",
+   "kcl_path": null
+  },
+  "WriteSubstationData": {
+   "depth": 1,
+   "loc": 31,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\WriteSubstationData.m",
+   "kcl_path": null
+  },
+  "YBusCalc": {
+   "depth": 2,
+   "loc": 32,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\YBusCalc.m",
+   "kcl_path": "KCL-Compliant Grid Generator\\Matlab Functions\\YBusCalc.m"
+  },
+  "YBusCalcDC": {
+   "depth": 2,
+   "loc": 15,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\YBusCalcDC.m",
+   "kcl_path": null
+  },
+  "cell2csv": {
+   "depth": 2,
+   "loc": 85,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": true,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\cell2csv.m",
+   "kcl_path": "KCL-Compliant Grid Generator\\Matlab Functions\\cell2csv.m"
+  },
+  "cyclebasisport": {
+   "depth": 2,
+   "loc": 191,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\cyclebasisport.m",
+   "kcl_path": null
+  },
+  "eigencentrality": {
+   "depth": 2,
+   "loc": 24,
+   "calls": [],
+   "externals": [
+    "eigs"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Sogol Realism\\eigencentrality.m",
+   "kcl_path": null
+  },
+  "fieldervector": {
+   "depth": 2,
+   "loc": 32,
+   "calls": [],
+   "externals": [
+    "eigs"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Sogol Realism\\fieldervector.m",
+   "kcl_path": null
+  },
+  "main_SRTV": {
+   "depth": 0,
+   "loc": 764,
+   "calls": [
+    "ACPowerFlowFinal",
+    "CreateBranch",
+    "CreateBuses",
+    "CreateGeneratorDataNational",
+    "CreateOLMatrices",
+    "CreateSNet",
+    "EIBranchSanitized",
+    "EILargeIslandSanitized",
+    "ElectricalComparison",
+    "InitOptions",
+    "MiddleLoopAC",
+    "MultiLevelProgram",
+    "NetworkGraphComparison",
+    "NetworkStatistics",
+    "OLPathDistances",
+    "PlotNodeDegrees",
+    "PlotNodeDegreesActual",
+    "ReactivePowerPlacement",
+    "RealismMetrics",
+    "RealismMetricsActualEI",
+    "RealismMetricsActualWECC",
+    "TrimQNCALines",
+    "WECCBranchSanitized",
+    "WECCLargeIslandSanitized",
+    "WriteLoads",
+    "WriteMetrics",
+    "WritePowerWorld",
+    "WriteSubstationData"
+   ],
+   "externals": [
+    "VChooseK",
+    "loadcase"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\SRTV\\main_SRTV.m",
+   "kcl_path": null
+  },
+  "nodedegre": {
+   "depth": 2,
+   "loc": 25,
+   "calls": [],
+   "externals": [],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Sogol Realism\\nodedegre.m",
+   "kcl_path": null
+  },
+  "normalizedlaplacian": {
+   "depth": 2,
+   "loc": 34,
+   "calls": [],
+   "externals": [
+    "eigs"
+   ],
+   "gridforge_owned": false,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Sogol Realism\\normalizedlaplacian.m",
+   "kcl_path": null
+  }
+ },
+ "families": {
+  "GMDData": [
+   "GMDDataAZNM",
+   "GMDDataCAISO",
+   "GMDDataFRCC",
+   "GMDDataMISO",
+   "GMDDataNEISO",
+   "GMDDataNWPP",
+   "GMDDataNYISO",
+   "GMDDataNational",
+   "GMDDataRFCE",
+   "GMDDataRFCW",
+   "GMDDataSPP",
+   "GMDDataSRMV",
+   "GMDDataSRTV",
+   "GMDDataSRVC"
+  ],
+  "MakeLoadProfiles_": [
+   "MakeLoadProfiles_AZNM",
+   "MakeLoadProfiles_CAISO",
+   "MakeLoadProfiles_FRCC",
+   "MakeLoadProfiles_MISO",
+   "MakeLoadProfiles_NEISO",
+   "MakeLoadProfiles_NWPP",
+   "MakeLoadProfiles_NYISO",
+   "MakeLoadProfiles_NYISO_NEW",
+   "MakeLoadProfiles_RFCE",
+   "MakeLoadProfiles_RFCW",
+   "MakeLoadProfiles_SPP",
+   "MakeLoadProfiles_SRMV",
+   "MakeLoadProfiles_SRTV",
+   "MakeLoadProfiles_SRVC",
+   "MakeLoadProfiles_react"
+  ]
+ },
+ "orphans": {
+  "ACInnerLoop": {
+   "loc": 270,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ACInnerLoop.m"
+  },
+  "ACInnerLoopDebugging": {
+   "loc": 156,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ACInnerLoopDebugging.m"
+  },
+  "ACInnerLoopV1": {
+   "loc": 239,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ACInnerLoopV1.m"
+  },
+  "AZNM5943": {
+   "loc": 11996,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\AZNM5943.m"
+  },
+  "AnalyzeResults": {
+   "loc": 138,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\AnalyzeResults.m"
+  },
+  "AnalyzeResultsActual": {
+   "loc": 64,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\AnalyzeResultsActual.m"
+  },
+  "CreateGeneratorDataExt": {
+   "loc": 63,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateGeneratorDataExt.m"
+  },
+  "CreateSNetOld": {
+   "loc": 296,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateSNetOld.m"
+  },
+  "CreateSNetV1": {
+   "loc": 355,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\CreateSNetV1.m"
+  },
+  "FavoringLines": {
+   "loc": 21,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\FavoringLines.m"
+  },
+  "GenerateResultsStats": {
+   "loc": 5,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\GenerateResultsStats.m"
+  },
+  "MatpowerACPF": {
+   "loc": 41,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MatpowerACPF.m"
+  },
+  "MatpowerDCOPFReal": {
+   "loc": 129,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MatpowerDCOPFReal.m"
+  },
+  "MatpowerDCPF": {
+   "loc": 39,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MatpowerDCPF.m"
+  },
+  "MatpowerED": {
+   "loc": 74,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MatpowerED.m"
+  },
+  "MeshNetwork": {
+   "loc": 12,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\MeshNetwork.m"
+  },
+  "ModifiedDCPowerFlow": {
+   "loc": 2,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ModifiedDCPowerFlow.m"
+  },
+  "NLKCL": {
+   "loc": 8,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\NLKCL.m"
+  },
+  "NREL_cluster": {
+   "loc": 384,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\FRCC\\NREL_cluster.m"
+  },
+  "NetworkStatisticsActual": {
+   "loc": 97,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\NetworkStatisticsActual.m"
+  },
+  "PlotResultStats": {
+   "loc": 439,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\PlotResultStats.m"
+  },
+  "RealismMetricsActual": {
+   "loc": 164,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\RealismMetricsActual.m"
+  },
+  "ResizeLines": {
+   "loc": 48,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\ResizeLines.m"
+  },
+  "SRTV4625": {
+   "loc": 12110,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\SRTV\\Example Datasets\\SRTV4625.m"
+  },
+  "SizingTransformers": {
+   "loc": 26,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\SizingTransformers.m"
+  },
+  "SquentialDCPowerFlow": {
+   "loc": 38,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\SquentialDCPowerFlow.m"
+  },
+  "StepSize": {
+   "loc": 38,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\StepSize.m"
+  },
+  "SubstationAssignmentScott": {
+   "loc": 248,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\SubstationAssignmentScott.m"
+  },
+  "WriteLoadScenarios": {
+   "loc": 14,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\WriteLoadScenarios.m"
+  },
+  "WritingCSVFiles": {
+   "loc": 26,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\WritingCSVFiles.m"
+  },
+  "allcyclesport": {
+   "loc": 88,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\allcyclesport.m"
+  },
+  "enrel_profiles_CAISO": {
+   "loc": 28,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\CAISO\\enrel_profiles_CAISO.m"
+  },
+  "loadprofiles2010": {
+   "loc": 817,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\MISO\\loadprofiles2010.m"
+  },
+  "smoothprofile": {
+   "loc": 47,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\AZNM\\smoothprofile.m"
+  },
+  "stats": {
+   "loc": 249,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Matlab Functions\\Sogol Realism\\stats.m"
+  },
+  "test": {
+   "loc": 10,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\RFCE\\NREL_Profiles\\Newark\\test.m"
+  },
+  "xls2rawMat_AZNM": {
+   "loc": 19,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\AZNM\\xls2rawMat_AZNM.m"
+  },
+  "xls2rawMat_FRCC": {
+   "loc": 11,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\FRCC\\xls2rawMat_FRCC.m"
+  },
+  "xls2rawMat_NEISO": {
+   "loc": 23,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\NEISO\\xls2rawMat_NEISO.m"
+  },
+  "xls2rawMat_NWPP": {
+   "loc": 19,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\NWPP\\xls2rawMat_NWPP.m"
+  },
+  "xls2rawMat_NYISO": {
+   "loc": 3,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\NYISO\\xls2rawMat_NYISO.m"
+  },
+  "xls2rawMat_RFCE": {
+   "loc": 7,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\RFCE\\xls2rawMat_RFCE.m"
+  },
+  "xls2rawMat_RFCW": {
+   "loc": 11,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\RFCW\\xls2rawMat_RFCW.m"
+  },
+  "xls2rawMat_SPP": {
+   "loc": 23,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\SPP\\xls2rawMat_SPP.m"
+  },
+  "xls2rawMat_SRMV": {
+   "loc": 11,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\SRMV\\xls2rawMat_SRMV.m"
+  },
+  "xls2rawMat_SRTV": {
+   "loc": 15,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\SRTV\\xls2rawMat_SRTV.m"
+  },
+  "xls2rawMat_SRVC": {
+   "loc": 23,
+   "kvl_path": "KCL-KVL Compliant Grid Generator\\Master Load Data\\SRVC\\xls2rawMat_SRVC.m"
+  }
+ }
+}

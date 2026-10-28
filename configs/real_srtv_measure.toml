@@ -1,0 +1,18 @@
+# Real-SRTV measurement run (work queue #1, 2026-07-10).
+# Defaults in config.py ARE the SRTV 4,600-bus case (InitOptions.m); this
+# file only caps TRIM at 2 iterations to measure per-iteration cost at the
+# full 2.49M-candidate scale before committing to a complete run.
+# Requires: academic Gurobi license + the v4 MATLAB exports (SRTV load
+# profiles) migrated. Run:
+#   python -m uv run python -m gridcrucible.core configs/real_srtv_measure.toml \
+#       --until trim_iterations --run-id real_srtv
+# Resume/extend later by raising max_iterations and reusing the run-id.
+
+stages = [
+    "load_inputs", "setup_substations", "setup_generators",
+    "build_scenarios", "build_candidates", "trim_iterations",
+]
+verbose = true
+
+[trim]
+max_iterations = 2

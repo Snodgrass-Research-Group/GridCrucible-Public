@@ -27,6 +27,9 @@ def catalog():
 
 @pytest.fixture(scope="module")
 def xf_tables():
+    # The transformer tables are not committed; skip until migrated.
+    if not (DATA_DIR / "xfdata.parquet").exists():
+        pytest.skip("run the migration first")
     return (pd.read_parquet(DATA_DIR / "xfdata.parquet"),
             pd.read_parquet(DATA_DIR / "xfxr.parquet"))
 

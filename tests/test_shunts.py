@@ -72,7 +72,8 @@ class TestWinnowing:
             place_reactive_compensation(model, config)
 
 
-@pytest.mark.skipif(not (DATA_DIR / "conductor_catalog.parquet").exists(),
+@pytest.mark.skipif(not (DATA_DIR / "conductor_catalog.parquet").exists()
+                    or not (DATA_DIR / "xfdata.parquet").exists(),
                     reason="run the migration first")
 class TestBusLevelSNetAndXFSizing:
     def test_full_stage6_flow(self, config, split_model):

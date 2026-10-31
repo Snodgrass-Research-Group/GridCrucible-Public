@@ -110,7 +110,7 @@ The data in `data/` are licensed under CC BY 4.0 (see
 | Files | Contents | Original source |
 |---|---|---|
 | `bus_input_data*.parquet`, `region_states.parquet` | 75,432 synthetic buses (names, locations, loads) by region and state | EPIGRIDS synthetic bus set (EIA-860 plant locations, census-derived loads) |
-| `generator_import.parquet`, `matlab_exports/Gen_reference.csv` | Generator fleet (limits, fuel, cost curves); the 719-unit SRTV fleet | EIA-860 generator inventory and synthetic cost curves from the EPIGRIDS project (typical heat rates, EIA fuel prices, ERCOT bid data), built by the MATLAB code |
+| `generator_import.parquet`, `matlab_exports/Gen_reference.csv` | Generator fleet (limits, fuel, cost curves); the 719-unit SRTV fleet | EIA-860 generator inventory and synthetic cost curves by Sogol Babaeinejadsarookolaee for the EPIGRIDS project (2018; method in Wang et al., PSERC, 2020; typical heat rates, EIA fuel prices, ERCOT bid data), built by the MATLAB code |
 | `conductor_catalog.parquet`, `gmd_*.parquet` | Conductor catalogue and conductor-spacing (GMD) tables | Dissertation conductor tables |
 | `ei_stats.json` | Node-degree histogram targets | Aggregate statistics only (hard-coded in `main_SRTV.m`) |
 | `matlab_exports/XFData.csv`, `XFXR.csv` | Typical transformer reactances and X/R ratios | Rule-of-thumb tables from the dissertation |
